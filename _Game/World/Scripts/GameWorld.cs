@@ -1,4 +1,5 @@
 using UnityEngine;
+using Logger = LOK1game.Utils.Logger;
 
 namespace LOK1game.World
 {
@@ -6,7 +7,7 @@ namespace LOK1game.World
     {
         public static GameWorld Current { get; private set; }
         public EGameModeId StandardGameModeOverride => _standardGameModeOverride;
-        
+
         [SerializeField] private EGameModeId _standardGameModeOverride;
 
         private void Awake()
@@ -23,13 +24,23 @@ namespace LOK1game.World
             {
                 gameModeManager.SetGameMode(App.ProjectContext.StandardGameModeId);
             }
-            
+
             Initialize();
         }
 
         private void OnDestroy()
         {
             Current = null;
+        }
+
+        public static Logger GetCurrentWorldLogger()
+        {
+            return App.Loggers.GetLogger(ELoggerGroup.CurrentWorld);
+        }
+
+        public static Logger GetSubWorldLogger()
+        {
+            return App.Loggers.GetLogger(ELoggerGroup.Subworld);
         }
 
         public static bool TryGetWorld<T>(out T world) where T : GameWorld
