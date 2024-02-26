@@ -1,8 +1,9 @@
 {
     "name": "com.lok1game.architecture",
-    "version": "0.0.1-stable.2",
+    "version": "0.0.1-stable.3",
     "displayName": "LOK1game Architecture",
     "dependencies": {
-        "com.unity.cinemachine" : "2.8.9"
+        "com.unity.cinemachine" : "2.8.9",
+        "com.unity.nuget.newtonsoft-json": "3.0.2"
     }
 }
